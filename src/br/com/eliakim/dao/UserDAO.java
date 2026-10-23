@@ -1,5 +1,6 @@
 package br.com.eliakim.dao;  // DAO objeto de acesso a dados
 
+import br.com.eliakim.exception.EmptyStorageException;
 import br.com.eliakim.exception.UserNotFoundException;
 import br.com.eliakim.model.UserModel;
 
@@ -35,6 +36,7 @@ public class UserDAO {
 
 
     public UserModel findById(final long id)  {
+        verifyStorage();
         var message = String.format(" Não existe usuário com o id %s cadastrado", id);
         return models.stream()
                 .filter(u -> u.getId()==id)
@@ -43,7 +45,22 @@ public class UserDAO {
 
     }
     public List<UserModel> findAll(){
-        return models;
+
+        List<UserModel> result;
+        try{
+            verifyStorage();
+            result = models;
+        }catch (EmptyStorageException e){
+            e.printStackTrace();
+            result = new ArrayList<>();
+        }
+            return models;
+    }
+
+
+
+    private void verifyStorage(){
+        if(models.isEmpty()) throw new EmptyStorageException("O armazenamento esta vazio");
     }
 
 }

@@ -1,5 +1,6 @@
 package br.com.eliakim.model;
 
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Objects;
 
@@ -8,12 +9,12 @@ public class UserModel{
    private Long id;
    private String name;
    private String email;
-   private OffsetDateTime birthday;
+   private LocalDate birthday;
 
     public UserModel() {
     }
 
-    public UserModel(Long id, String name, OffsetDateTime birthday, String email) {
+    public UserModel(final Long id, String name, String email,  final LocalDate birthday) {
         this.id = id;
         this.name = name;
         this.birthday = birthday;
