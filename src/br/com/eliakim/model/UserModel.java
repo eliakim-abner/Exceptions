@@ -1,7 +1,6 @@
 package br.com.eliakim.model;
 
 import java.time.LocalDate;
-import java.time.OffsetDateTime;
 import java.util.Objects;
 
 public class UserModel{
@@ -45,11 +44,11 @@ public class UserModel{
         this.email = email;
     }
 
-    public OffsetDateTime getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(OffsetDateTime birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 
@@ -71,10 +70,10 @@ public class UserModel{
     @Override
     public String toString() {
         return "UserModel{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", birthday=" + birthday +
+                " id= " + id +"\n" +
+                ", name= '" + name + '\'' +
+                ", email= '" + email + '\'' +
+                ", birthday= " + birthday +
                 '}';
     }
 }
